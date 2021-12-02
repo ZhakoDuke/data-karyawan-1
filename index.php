@@ -3,6 +3,10 @@ require 'config.php';
 
 $karyawan = query("SELECT * FROM karyawan");
 
+if( isset($_POST["cari"]) ) {
+    $karyawan = cari($_POST["keyword"]);
+}
+
 
 ?>
 <!DOCTYPE html>
@@ -18,10 +22,15 @@ $karyawan = query("SELECT * FROM karyawan");
 <body>
     <header>
         <h1>Makodevz</h1>
+
     </header>
 
 <div class="container">
         <a class="tambah" href="tambah.php">Tambah Karyawan <i class="fas fa-plus-circle"></i></a>
+    <form action="" method="POST">
+        <input type="text" name="keyword" size="30" autofocus placeholder="Search.." autocomplete="off">
+        <button type="submit" name="cari">Search!</button>
+    </form>
         <table>
             <tr>
                 <th>No.</th>
@@ -39,7 +48,8 @@ $karyawan = query("SELECT * FROM karyawan");
                 <td class="umur"><?= $kyn["umur"]; ?></td>
                 <td class="kerja"><?= $kyn["pekerjaan"]; ?></td>
                 <td class="hapus">
-                    <a class="pecat" href="hapus.php?id=<?= $kyn["id"]; ?>" onclick="return confirm('Yakin Ingin Dipecat?')">Pecat <i class="fas fa-minus-square"></i></a> 
+                    <a class="pecat" href="hapus.php?id=<?= $kyn["id"]; ?>" onclick="return confirm('Yakin Ingin Dipecat?')">Pecat <i class="fas fa-minus-square"></i></a> |
+                    <a class="pecat" href="ubah.php?id=<?= $kyn["id"]; ?>">Usir <i class="fas fa-minus-square"></i></a>
                 </td>
             </tr>
             <?php $i++; ?>

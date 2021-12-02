@@ -5,7 +5,6 @@ $id = $_GET["id"];
 
 $kyn = query("SELECT * FROM karyawan WHERE id = $id")[0];
 
-
 if (isset($_POST["submit"])) {
 
     if (ubah($_POST) > 0) {
@@ -33,7 +32,7 @@ if (isset($_POST["submit"])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tambah Karyawan</title>
+    <title>Ubah Karyawan</title>
     <link rel="stylesheet" href="tambah.css">
 </head>
 
@@ -51,7 +50,7 @@ if (isset($_POST["submit"])) {
             <!-- <label for="pekerjaan">Pekerjaan</label> -->
             <input type="text" value="<?= $kyn["pekerjaan"]; ?>" name="pekerjaan" id="pekerjaan">
             <div class="kosong"></div>
-            <button class="tambah" type="submit" name="submit">Ubah!</button>
+            <button class="tambah" type="submit" name="submit">Tambah!</button>
         </form>
     </section>
 </body>

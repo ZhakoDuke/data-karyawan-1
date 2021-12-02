@@ -47,8 +47,20 @@ function ubah($data) {
                 pekerjaan = '$pekerjaan'
                 WHERE id = $id
                 ";
+                
     mysqli_query($conn, $query);
 
     return mysqli_affected_rows($conn);
+}
+
+
+function cari($keyword) {
+    $query = "SELECT * FROM karyawan
+                    WHERE
+                nama LIKE '%$keyword%' OR
+                umur LIKE '%$keyword%' OR
+                pekerjaan LIKE '%$keyword%'
+                ";
+    return query($query);
 }
 ?>
